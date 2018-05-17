@@ -12,7 +12,7 @@ Despike
 .. |Python| image:: https://img.shields.io/pypi/pyversions/despike.svg?label=Python
 .. |License| image:: https://img.shields.io/pypi/l/despike.svg?label=License
 
-Python package to remove spike in 2D images.
+Python package to remove spikes in 2D images.
 
 Install
 -------
