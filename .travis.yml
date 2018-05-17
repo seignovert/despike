@@ -1,25 +1,27 @@
 sudo: false
 language: python
 python:
-  - "2.7"
-  - "3.6"
+- '2.7'
+- '3.6'
 install: pip install tox-travis
 script: tox
+after_success:
+- coveralls
 
 jobs:
   include:
-    - stage: deploy
-      if: tag IS present
-      script: # Deploying to PyPI ...
-      python: 3.6
-      env: PBR_VERSION=$TRAVIS_TAG
-      deploy:
-        provider: pypi
-        user: seignovert
-        password:
-            secure: E3tHeRrWoAKcZwF3r96mXiJFmjtVikyX27hPPzWOyK4UYJVMWe6VuhdtYvAvx/QSHxgV6ep0+Co8G0D4MnF5q6B8o+/9OgUG2aCYzeA91NBWeiHwawsVyS2rXAzYlc/YaSuGsPPkHg/lxScF9SPEpuQUGJPwR3QIXsJW8GdA2SohYkK3SvMI6mecV1goyvmKLDgPUIAQBAa0gbmNOsvkUabz9U4K3Gr/zuFMIobdYCcsRccRJFdGhz4ymrbfDZZCAKEguHJ3qyZXFgxKs4deF9boSB5zwQLmbWBYqmHaMNoEkdH0XiVKbiGiuoB3kBcXP+YRKI5wVjynVydBw7keSdpLaFZVCmSTcPHxRgwkNoISx826/sARf2EFLYEBAN2imxcAml/cn30GGypEsSByJyPdvQYnFABUzkm77gx2NbTvp6OL+nDFn87b/528qNS5TKiDIVtZOz77MlhjhalEDzF8lq4bKf4TgTJlgfGji0513omaH2pi24jsF521L/JifcrpE18KmHr3EYgCN3qvl5xrp+ht8qO+ISi6Tn/kQjSm7ny+DGSsoYeEAxKSu/FqO+087nFVq5ylZ7waonzPGEH1gxOkNwTmGJgjCJJHbY6qT7YV9iXd9MeKwtwhY4bEE0tBaIzjDEwyV1VCsmADZBBCYVLY0M4MNJSCjgU/O44=
-        skip_cleanup: true
-        distributions: sdist bdist_wheel
-        on:
-            tags: true
-            all_branches: true
+  - stage: deploy
+    if: tag IS present
+    script: echo 'Deploy to PyPi...'
+    python: 3.6
+    env: PBR_VERSION=$TRAVIS_TAG
+    deploy:
+      provider: pypi
+      user: seignovert
+      password:
+        secure: VMXrHWp/IMmyOwAxoU31XHndG+4VbhIFuEDasHk4wiKcx5s1aSMhn/xKpWg/a5nWU2F3Wf082cnaxrBkhUkeqGjCnwsH0kr5vUGgACwIRxf8ZlVKwKSG2P7nKHrRf5dzVcTIDRU2zd47WWCs1lKevWKGRTcKWVqCRdS2wxE8ZMEn5TlYIvr5n8SObReJgPpGFaKF0CNIUCOG1jHaxtqOYUpVtkSJqkR9vI1AeQI/g3frtrOHTCLeR6KlUpoelXvsEeeMstJeJv2nEoD+kLvivHUXKvL6DhSvTf2FmUD7J3FdhgTbzoKsxN9s53XMrTpxswC78Imo/XarxaJhUGvYs9s1Wq/8qdSM4yHt0p7MOmp2OsjCMwP3yAgJTnNCxatIsfDJkBsiWlibYJfoB1L6Z+LDh0B+qivPjds0RQN+zsHUtP3GvJcN3+F33DIc7YrYK9tmWe4FSaEgSo7PFZWWgildjx8v5pMVC6shv+Ppdk2bKj6+KdBS3IBR1N+QPu8N6rjsupOBMF9u9reI2X9GdG/ngPSDGbHbwvBgcsvXEA2FBoj/Bjo+NI2/LVq/soN/0CxiQnqhgR41nnB0MZDFbMigCbYwzipzXp7HQnx9gKgty8k7Kb45DfyL344uyYxhb9tqUCkKqW7CkJ2QCFGpxALYnauUtYVVvSljcU5zIhg=
+      skip_cleanup: true
+      distributions: sdist bdist_wheel
+      on:
+        tags: true
+        all_branches: true

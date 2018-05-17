@@ -1,10 +1,12 @@
 ===============================
 Despike
 ===============================
-|Build| |PyPI| |Status| |Version| |Python| |License|
+|Build| |Coverage| |PyPI| |Status| |Version| |Python| |License|
 
 .. |Build| image:: https://travis-ci.org/seignovert/despike.svg?branch=master
         :target: https://travis-ci.org/seignovert/despike
+.. |Coverage| image:: https://coveralls.io/repos/github/seignovert/despike/badge.svg?branch=master
+        :target: https://coveralls.io/github/seignovert/despike?branch=master
 .. |PyPI| image:: https://img.shields.io/badge/PyPI-despike-blue.svg
         :target: https://pypi.python.org/project/despike
 .. |Status| image:: https://img.shields.io/pypi/status/despike.svg?label=Status
