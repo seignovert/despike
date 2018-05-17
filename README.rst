@@ -12,7 +12,19 @@ Despike
 .. |Python| image:: https://img.shields.io/pypi/pyversions/despike.svg?label=Python
 .. |License| image:: https://img.shields.io/pypi/l/despike.svg?label=License
 
-Python package to remove spikes in 2D images.
+*Python package to remove spikes in 2D images*
+
+Desciption
+----------
+The spikes in 2D-images correspond to high-energy pixels generated
+by cosmic rays, sensor noise or dead pixels. They use to have values
+very different from the rest of their neighboor.
+
+To find them, we use a moving box (5×5 pixels by default) on the
+image and we compare the mean/median of this sub-image to the central
+pixel. If the value is n (3 by default) times larger than the observed
+standard deviation we use the median value a the surrounding pixels
+(8 pixels by default) to replace the spike.
 
 Install
 -------
@@ -28,3 +40,17 @@ With the ``source files``:
 
     $ git clone https://github.com/seignovert/despike.git
     $ cd despike ; python setup.py install
+
+Usage
+------
+
+.. code:: python
+
+    >>> import despike
+
+    >>> despike.spikes(img) # Search the location of spikes in the image
+
+    >>> despike.clean(img) # Clean the image from spikes
+
+
+An example can be find in this `Jupyter NoteBook <https://nbviewer.jupyter.org/github/seignovert/despike/blob/master/example.ipynb>`_.

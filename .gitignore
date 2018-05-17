@@ -57,9 +57,9 @@ docs/_build/
 # PyBuilder
 target/
 
-# Spice Kernels
-kernels/
-
 # Tox
 AUTHORS
 ChangeLog
+
+# Jupyter notebook
+.ipynb_checkpoints/
